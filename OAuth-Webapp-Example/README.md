@@ -10,8 +10,8 @@ To get Viam OAuth Setup, follow the instructions in the next section.
 
 If you are familiar with Viam OAuth already you can directly configure and use the commands below.
 
-1. Download and install the VIAM CLI tool [Viam OAuth](https://docs.viam.com/dev/tools/cli/)
-    * If you are using the windows CLI tool the .exe you have downloaded needs to be set up with environment path variables [Guide](https://www.thewindowsclub.com/how-to-add-edit-a-path-variable-in-windows)
+1. Download and install the VIAM CLI tool [Viam CLI](https://docs.viam.com/dev/tools/cli/)
+    * If you are using the windows CLI tool the .exe you have downloaded needs to be set up with environment path variables. [Guide here](https://www.thewindowsclub.com/how-to-add-edit-a-path-variable-in-windows)
 2. If you are new to Viam OAuth I recommend to follow the instructions here: [Viam OAuth](https://docs.viam.com/manage/manage/oauth/)
 
 
