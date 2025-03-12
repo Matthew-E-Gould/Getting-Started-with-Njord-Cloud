@@ -4,7 +4,9 @@
 	import {
 		PUBLIC_FUSION_AUTH_CLIENT_ID,
 		PUBLIC_FUSION_AUTH_URL,
-		PUBLIC_LOGIN_CALLBACK
+		PUBLIC_LOGIN_CALLBACK,
+		PUBLIC_FUSION_AUTH_LOGOUT_URL,
+		PUBLIC_LOGOUT_CALLBACK
 	} from '$env/static/public';
 
 	const href = encodeURI(
@@ -84,6 +86,17 @@
 		if (parts.length === 2) return parts.pop()?.split(';').shift();
 	}
 
+	function deleteCookie(name: string, path: string = '/'): void {
+		document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=${path}; SameSite=Strict;`;
+	}
+
+	function logout(){
+		deleteCookie('access_token');
+		// location.replace(`${PUBLIC_FUSION_AUTH_LOGOUT_URL}&redirect_uri=${PUBLIC_LOGIN_CALLBACK}`);
+		window.location.href = `${PUBLIC_FUSION_AUTH_LOGOUT_URL}/oauth2/logout?client_id=${PUBLIC_FUSION_AUTH_CLIENT_ID}&redirect_uri=${PUBLIC_LOGOUT_CALLBACK}`;
+		// location.reload();
+	}
+
 	onMount(() => {
 		accessToken = getCookie('access_token');
 	});
@@ -103,6 +116,8 @@
 			<pre>{JSON.stringify(data.tabularData, null, 2)}</pre>
 		{/await}
 	{/await}
+
+	<button  on:click={() => logout()}>Log out</button>
 {:else}
 	<a {href}>Login</a>
 {/if}
